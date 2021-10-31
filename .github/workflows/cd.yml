@@ -73,6 +73,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             --allow-unauthenticated musl-tools
+      - name: Install linker
         if: matrix.CROSS
         run: |
           sudo apt-get update 
