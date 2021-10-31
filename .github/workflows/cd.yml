@@ -41,7 +41,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        build: [linux-gnu, linux-musl, linux-arm-v7-gnu, linux-arm-v7-musl, macos]
+        build: [linux-gnu, linux-musl, linux-arm-v7-gnu, macos]
         include:
           - BUILD: linux-gnu
             OS: ubuntu-18.04
@@ -62,13 +62,6 @@ jobs:
             TARGET: armv7-unknown-linux-gnueabihf
             LINKER: gcc-arm-linux-gnueabihf
             CROSS: true
-          - BUILD: linux-arm-v7-musl
-            OS: ubuntu-18.04
-            TOOLCHAIN: stable
-            TARGET: armv7-unknown-linux-musleabihf
-            LINKER: gcc-arm-linux-musleabihf
-            CROSS: true
-            MUSL: true
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -101,7 +94,7 @@ jobs:
           mkdir -p release/bin                   
           cp {LICENSE*,COPYRIGHT,README.md,CHANGELOG.md} release/
           cp -r doc release/doc          
-          cp target/${{ matrix.TARGET }}/release/dtn7 release/bin
+          cp target/${{ matrix.TARGET }}/release/{dtnd,dtnsend,dtnrecv,dtnquery,dtntrigger} release/bin
           mv release/ dtn7-${{ env.RELEASE_VERSION }}/
       - name: Create release artifacts
         shell: bash
