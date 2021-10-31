@@ -59,6 +59,8 @@ jobs:
             OS: ubuntu-18.04
             TOOLCHAIN: stable
             TARGET: armv7-unknown-linux-gnueabihf
+            LINKER: gcc-arm-linux-gnueabihf
+            CROSS: true
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -71,6 +73,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             --allow-unauthenticated musl-tools
+        if: matrix.CROSS
+        run: |
+          sudo apt-get update 
+          sudo apt-get install -y --allow-unauthenticated ${{ matrix.LINKER }}
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
