@@ -1,6 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.20.0] - 2021-10-31
+
+### Bug Fixes
+
+- Fixed registering of non-singleton endpoints during startup of dtnd
+- Removed misleading log message about "peer not seen" for static peers
+
+### Styling
+
+- Removed unneeded import in http cla
+
+### Testing
+
+- Added test for non-singleton group communication
+
 ## [0.16.15] - 2021-10-01
 
 ### Bug Fixes
