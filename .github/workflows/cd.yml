@@ -62,7 +62,7 @@ jobs:
             TARGET: armv7-unknown-linux-gnueabihf
             LINKER: gcc-arm-linux-gnueabihf
             CROSS: true
-         - BUILD: linux-arm-v7-musl
+          - BUILD: linux-arm-v7-musl
             OS: ubuntu-18.04
             TOOLCHAIN: stable
             TARGET: armv7-unknown-linux-musleabihf
