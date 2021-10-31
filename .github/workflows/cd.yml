@@ -107,4 +107,3 @@ jobs:
           tag: ${{ github.ref }}
           release_name: "Release v${{ env.RELEASE_VERSION }}"
           body: "${{ needs.generate-changelog.outputs.release_body }}"
-            --token ${{ secrets.CARGO_TOKEN }}
