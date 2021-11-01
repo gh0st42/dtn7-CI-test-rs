@@ -45,20 +45,20 @@ jobs:
         include:
           - BUILD: linux-gnu
             OS: ubuntu-18.04
-            TOOLCHAIN: 1.54.0
+            TOOLCHAIN: 1.55.0
             TARGET: x86_64-unknown-linux-gnu
           - BUILD: linux-musl
             OS: ubuntu-18.04
-            TOOLCHAIN: 1.54.0
+            TOOLCHAIN: 1.55.0
             TARGET: x86_64-unknown-linux-musl
             MUSL: true
           - BUILD: macos
             OS: macos-10.15
-            TOOLCHAIN: 1.54.0
+            TOOLCHAIN: 1.55.0
             TARGET: x86_64-apple-darwin
           - BUILD: linux-arm-v7-gnu
             OS: ubuntu-18.04
-            TOOLCHAIN: 1.54.0
+            TOOLCHAIN: 1.55.0
             TARGET: armv7-unknown-linux-gnueabihf
             LINKER: gcc-arm-linux-gnueabihf
             CROSS: true
