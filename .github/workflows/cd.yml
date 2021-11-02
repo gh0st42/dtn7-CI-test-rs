@@ -94,7 +94,7 @@ jobs:
           mkdir -p release/bin                   
           cp {LICENSE*,COPYRIGHT,README.md,CHANGELOG.md} release/
           cp -r doc release/doc          
-          cp target/${{ matrix.TARGET }}/release/{dtnd,dtnsend,dtnrecv,dtnquery,dtntrigger} release/bin
+          cp target/${{ matrix.TARGET }}/release/dtnd release/bin
           mv release/ dtn7-${{ env.RELEASE_VERSION }}/
       - name: Create release artifacts
         shell: bash
