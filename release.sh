@@ -4,7 +4,7 @@
 if [ -n "$1" ]; then
 	# update the version
 	msg="# managed by release.sh"
-	sed "s/^version = .* $msg$/version = \"${1#v}\" $msg/" -i Cargo.toml
+	gsed "s/^version = .* $msg$/version = \"${1#v}\" $msg/" -i Cargo.toml
 	# update the changelog
 	git cliff --tag "$1" > CHANGELOG.md
 	sleep 1
