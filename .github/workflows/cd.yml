@@ -41,7 +41,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        build: [linux-gnu, linux-musl, linux-arm-v7-gnu, macos]
+        build: [linux-gnu, linux-musl, linux-arm-v7-gnu, linux-arm-v7-musl, macos]
         include:
           - BUILD: linux-gnu
             OS: ubuntu-18.04
@@ -53,7 +53,7 @@ jobs:
             TARGET: x86_64-unknown-linux-musl
             MUSL: true
           - BUILD: macos
-            OS: macos-10.15
+            OS: macos-11
             TOOLCHAIN: 1.55.0
             TARGET: x86_64-apple-darwin
           - BUILD: linux-arm-v7-gnu
@@ -62,6 +62,12 @@ jobs:
             TARGET: armv7-unknown-linux-gnueabihf
             LINKER: gcc-arm-linux-gnueabihf
             CROSS: true
+          - BUILD: linux-arm-v7-musl
+            OS: ubuntu-18.04
+            TOOLCHAIN: 1.55.0
+            TARGET: armv7-unknown-linux-musleabihf
+            CROSS: true
+            
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -86,7 +92,11 @@ jobs:
           target: ${{ matrix.TARGET }}
           override: true
       - name: Build
-        run: cargo build --release --target ${{ matrix.TARGET }} --bins --examples
+        uses: actions-rs/cargo@v1
+        with:
+          use-cross: true
+          command: build
+          args: --release --target ${{ matrix.TARGET }} --bins --examples
       - name: Prepare release assets
         shell: bash
         run: |
