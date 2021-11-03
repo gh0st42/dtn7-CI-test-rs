@@ -82,7 +82,7 @@ jobs:
       - name: Build
         uses: actions-rs/cargo@v1
         with:
-          use-cross: matrix.CROSS
+          use-cross: ${{ matrix.CROSS }}
           command: build
           args: --release --target ${{ matrix.TARGET }} --bins --examples
       - name: Prepare release assets
