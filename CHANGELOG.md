@@ -1,12 +1,48 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.20.0] - 2021-10-31
+## [0.17.1] - 2021-11-18
+
+### Documentation
+
+- Updated README and CLI help to reflect latest protocol and code changes
+- Added `doc/http-client-api.md, documenting the http client api and websocket interface.
+- Added section about JSON mode in http client API documentation
+- Updated README to point to the different guides and include the new features
+
+### Features
+
+- Added `/json` mode for clients without CBOR and the `/node` command now returns the node id via ws
+
+### Example
+
+- Added `dtnecho_json.go` illustrating how to write clients using only JSON and websockets
+
+## [0.17.0] - 2021-11-04
+
+### Features
+
+- Implemented TCP convergence layer draft (v28)
+
+### Miscellaneous Tasks
+
+- Upgraded d7sneakers version, it now bundles sqlite
+- Added armv7 target for binary releases
+
+### Refactor
+
+- Changed DtnPeer to carry not only IpAddresses but a an enum with IpAddr and Generic(String)
+
+## [0.16.16] - 2021-11-02
 
 ### Bug Fixes
 
 - Fixed registering of non-singleton endpoints during startup of dtnd
 - Removed misleading log message about "peer not seen" for static peers
+- Made all test shell scripts normalize bundle counting output
+- DtnPeer doctests would fail in some cases as static peers never timeout. Now only dynamic ones are generated for the test.
+- Changed cbor decoding to also work on 32bit machines
+- Upgraded to axum 0.3 to fix long compile times with rustc 1.56
 
 ### Styling
 
